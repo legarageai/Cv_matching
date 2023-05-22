@@ -158,6 +158,24 @@ if uploaded_file is not None:
                     # Extraire les diplômes présents dans le CV
                     cv_present_diplomes = extract_present_diplomes(script)
 
+                    # Extraire les compétences de la fiche de poste qui ne sont pas dans le CV
+                    missing_skills = []
+                    for skill in post_skills:
+                        if skill not in present_skills:
+                            missing_skills.append(skill)
+                    #missing_skills = list(set(missing_skills))
+                    print(missing_skills)
+
+                    # Générer le chemin d'accès pour le fichier CSV des compétences manquantes
+                    csv_filename = os.path.splitext(file)[0] + ".csv"
+                    file_path = os.path.join('skills_manquant', csv_filename)
+
+                    with open(file_path, 'w', newline='') as files:
+                        writer = csv.writer(files)
+                        writer.writerow(['Compétences manquantes'])
+                        for skill in missing_skills:
+                            writer.writerow([skill])
+
                     # Calculer les similarités entre les compétences, domaines et diplômes
                     skills_similarity = Similarity(cv_present_skills, present_skills)
                     domaines_similarity = Similarity(cv_present_domaines, present_domaines)

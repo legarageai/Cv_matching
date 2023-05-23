@@ -194,3 +194,27 @@ if uploaded_file is not None:
         st.write("Classement des CV :")
         for index, (file, score) in enumerate(sorted_scores.items(), 1):
             st.write(f"{index}. {file} | Score : {score}")
+
+            # Ajouter les boutons pour chaque CV
+            col1, col2, col3 = st.columns(3)
+            
+            # Bouton "Voir plus"
+            if col1.button(f"Voir plus ({file})", key=f"voir_plus_{file}"):
+                # Logique pour afficher plus d'informations sur le CV
+                st.write("Compétences présentes :", cv_present_skills)
+                st.write("Domaines présents :", cv_present_domaines)
+                st.write("Diplômes présents :", cv_present_diplomes)
+            
+            # Bouton "Accepter"
+            if col2.button(f"Accepter ({file})", key=f"accepter_{file}"):
+                # Logique pour afficher plus d'informations sur le CV
+                st.write("Compétences présentes :", cv_present_skills)
+                st.write("Domaines présents :", cv_present_domaines)
+                st.write("Diplômes présents :", cv_present_diplomes)
+            
+            # Bouton "Refuser"
+            if col3.button(f"Refuser ({file})", key=f"refuser_{file}"):
+                # Logique pour afficher plus d'informations sur le CV
+                st.write("Compétences présentes :", cv_present_skills)
+                st.write("Domaines présents :", cv_present_domaines)
+                st.write("Diplômes présents :", cv_present_diplomes)

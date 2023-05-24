@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CLASSIFICATION DES CVs</title>
+</head>
+<body>
+    <h1>INFORMATION DE LA FICHE DE POSTE:</h1>
+    <h2>Compétences présentes :</h2>
+    <!-- <ul>
+        {% for skill in present_skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Domaines présents :</h2>
+    <ul>
+        {% for domaine in present_domaines %}
+            <li>{{ domaine }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Diplômes présents :</h2>
+    <ul>
+        {% for diplome in present_diplomes %}
+            <li>{{ diplome }}</li>
+        {% endfor %}
+    </ul> -->
+
+<!-- classement des cv -->
+
+
+    {% block content %}
+    <h2>Résultats de l'analyse</h2>
+    
+    <h3>Compétences présentes :</h3>
+    <ul>
+      {% for skill in present_skills %}
+        <li>{{ skill }}</li>
+      {% endfor %}
+    </ul>
+    
+    <h3>Domaines présents :</h3>
+    <ul>
+      {% for domaine in present_domaines %}
+        <li>{{ domaine }}</li>
+      {% endfor %}
+    </ul>
+    
+    <h3>Diplômes présents :</h3>
+    <ul>
+      {% for diplome in present_diplomes %}
+        <li>{{ diplome }}</li>
+      {% endfor %}
+    </ul>
+    
+    <h3>Classement des CV :</h3>
+    <ol>
+      {% for cv_info in cv_ranking %}
+        <li>
+          {{ cv_info[0] }} - Score : {{ cv_info[1] }}
+          <form action="/cv_details" method="POST">
+            <input type="hidden" name="cv_name" value="{{ cv_info[0] }}">
+            <button type="submit" name="action" value="view">Voir plus</button>
+            <button type="submit" name="action" value="accept">Accepter</button>
+            <button type="submit" name="action" value="reject">Rejeter</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ol>
+    
+    {% endblock %}
+    
+
+</body>
+</html>

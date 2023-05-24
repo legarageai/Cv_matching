@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Détails du CV</title>
+</head>
+<body>
+    <h1>Détails du CV</h1>
+
+    <h2>Contenu du CV</h2>
+    <pre>{{ cv_content }}</pre>
+
+    {% if status == 1 %}
+    <h1>Votre profil a été jugé intéressant et accepté, néanmoins, voici quelques recommandations pour renforcer votre profil :</h1>
+    {% endif %}
+
+    {% if status == 0 %}
+    <h1>Votre profil a été refusé, néanmoins, voici quelques recommandations pour renforcer votre profil :</h1>
+    {% endif %}
+
+    {% if recommended_videos %}
+    <h2>Vidéos recommandées</h2>
+    <ul>
+        {% for video in recommended_videos %}
+        <li>{{ video }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if recommended_certifications %}
+    <h2>Certifications recommandées</h2>
+    <ul>
+        {% for certification in recommended_certifications %}
+        <li>{{ certification }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

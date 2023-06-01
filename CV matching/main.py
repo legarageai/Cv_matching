@@ -253,9 +253,13 @@ def cv_details():
             missing_skill = merged_df.loc[i, 'Compétences']
             recommended_video = merged_df.loc[i, 'video']
             recommended_certification = merged_df.loc[i, 'certification']
-            recommended_videos.append(recommended_video)
-            recommended_certifications.append(recommended_certification)
-            return render_template('cv_details.html', status=status, recommended_videos=recommended_videos, recommended_certifications=recommended_certifications)
+            # Vérification pour éviter les valeurs "nan"
+            if not pd.isnull(recommended_video):
+                recommended_videos.append(recommended_video)
+            if not pd.isnull(recommended_certification):
+                recommended_certifications.append(recommended_certification)
+
+        return render_template('cv_details.html', status=status, recommended_videos=recommended_videos, recommended_certifications=recommended_certifications)
 
     elif action == 'reject':
         status = 0
@@ -282,11 +286,14 @@ def cv_details():
             missing_skill = merged_df.loc[i, 'Compétences']
             recommended_video = merged_df.loc[i, 'video']
             recommended_certification = merged_df.loc[i, 'certification']
-            recommended_videos.append(recommended_video)
-            recommended_certifications.append(recommended_certification)
-            return render_template('cv_details.html', status=status, recommended_videos=recommended_videos, recommended_certifications=recommended_certifications)
+            # Vérification pour éviter les valeurs "nan"
+            if not pd.isnull(recommended_video):
+                recommended_videos.append(recommended_video)
+            if not pd.isnull(recommended_certification):
+                recommended_certifications.append(recommended_certification)
+        return render_template('cv_details.html', status=status, recommended_videos=recommended_videos, recommended_certifications=recommended_certifications)
 
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=5000)

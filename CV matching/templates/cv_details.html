@@ -2,24 +2,77 @@
 <html>
 <head>
     <title>Détails du CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 30px 0;
+            padding: 10px;
+            background-color: #337ab7;
+            color: #fff;
+        }
+
+        h2 {
+            margin: 20px 0 10px;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        pre {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .fadeIn {
+            animation-name: fadeIn;
+            animation-duration: 1s;
+        }
+    </style>
 </head>
 <body>
     <h1>Détails du CV</h1>
 
     <h2>Contenu du CV</h2>
-    <pre>{{ cv_content }}</pre>
+    <pre class="fadeIn">{{ cv_content }}</pre>
 
     {% if status == 1 %}
-    <h1>Votre profil a été jugé intéressant et accepté, néanmoins, voici quelques recommandations pour renforcer votre profil :</h1>
+    <h1 class="fadeIn">Votre profil a été jugé intéressant et accepté, néanmoins, voici quelques recommandations pour renforcer votre profil :</h1>
     {% endif %}
 
     {% if status == 0 %}
-    <h1>Votre profil a été refusé, néanmoins, voici quelques recommandations pour renforcer votre profil :</h1>
+    <h1 class="fadeIn">Votre profil a été refusé, néanmoins, voici quelques recommandations pour renforcer votre profil :</h1>
     {% endif %}
 
     {% if recommended_videos %}
-    <h2>Vidéos recommandées</h2>
-    <ul>
+    <h2 class="fadeIn">Vidéos recommandées</h2>
+    <ul class="fadeIn">
         {% for video in recommended_videos %}
         <li>{{ video }}</li>
         {% endfor %}
@@ -27,8 +80,8 @@
     {% endif %}
 
     {% if recommended_certifications %}
-    <h2>Certifications recommandées</h2>
-    <ul>
+    <h2 class="fadeIn">Certifications recommandées</h2>
+    <ul class="fadeIn">
         {% for certification in recommended_certifications %}
         <li>{{ certification }}</li>
         {% endfor %}

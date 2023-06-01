@@ -1,11 +1,76 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <style>
+      body {
+        font-size: 150%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('https://maintenancia.com/templates/EmploiMaintenanceIndustrielle/main/images/page-recruteurs/matching-cv.png');
+        backdrop-filter: blur(10px); /* Ajoutez cette ligne pour appliquer le flou */
+      }
+
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        padding-top: 10px;
+      }
+
+      h1 {
+        border: 2px solid black;
+        padding: 10px;
+        text-align: center;
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+    <script>
+      // Tableau d'URL des images
+      var imageUrls = [
+        'https://f.hellowork.com/helloworkplace/2021/02/recrutement_matching_cv.jpg',
+        'https://maintenancia.com/templates/EmploiMaintenanceIndustrielle/main/images/page-recruteurs/matching-cv.png',
+        'https://scoptalent.com/wp-content/uploads/2022/09/ScopMatching-CV.png'
+        // Ajoutez ici les URL des autres images que vous souhaitez utiliser
+      ];
+
+      // Génération d'un index aléatoire pour sélectionner une image du tableau
+      var randomIndex = Math.floor(Math.random() * imageUrls.length);
+
+      // Sélection de l'URL de l'image aléatoire
+      var randomImageUrl = imageUrls[randomIndex];
+
+      // Appliquer l'image de fond aléatoire au corps de la page
+      document.body.style.backgroundImage = 'url(' + randomImageUrl + ')';
+    </script>
+  </head>
   <body>
-    <title>CV MATCHING</title>
-    <h1>Veuillez uploader la fiche descriptive de poste</h1>
-    <form action="/upload" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column;">
-      <input type="file" name="file" accept=".pdf" />
-      <input type="submit" value="Upload" />
-    </form>    
+    <div class="container">
+      <h1>CV ENGINE</h1>
+     
+      <h2>Veuillez uploader la fiche descriptive de poste</h2>
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".pdf" />
+        <input type="submit" value="Upload" />
+      </form>
+    </div>
   </body>
 </html>

@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
-import fasttext
+#import fasttext
 import PyPDF2
 import pdfplumber
-import fastai
+#import fastai
 import nltk
 import numpy as np
 import pandas as pd
@@ -14,15 +14,17 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Charger le modèle FastText
-CV = './cc.fr.300.bin'
+#CV = './cc.fr.300.bin'
 data_dir = './data/CV'
 missing_skills_dir = './data/missing_skills'
-ft_model = fasttext.load_model(CV)
+#ft_model = fasttext.load_model(CV)
 
 # Fonction pour calculer la similarité entre deux mots
 def WordSimilarity(word1, word2):
-    embedding1 = ft_model.get_word_vector(word1)
-    embedding2 = ft_model.get_word_vector(word2)
+    # embedding1 = ft_model.get_word_vector(word1)
+    # embedding2 = ft_model.get_word_vector(word2)
+    embedding1 = np.random.rand(300)  # Placeholder pour la similarité (à remplacer)
+    embedding2 = np.random.rand(300)  # Placeholder pour la similarité (à remplacer)
     similarity_score = np.dot(embedding1, embedding2) / (np.linalg.norm(embedding1) * np.linalg.norm(embedding2))
     return similarity_score
 

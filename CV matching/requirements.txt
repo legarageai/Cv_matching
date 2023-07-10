@@ -1,0 +1,8 @@
+flask
+PyPDF2
+pdfplumber
+nltk
+numpy
+pandas
+csv
+nltk

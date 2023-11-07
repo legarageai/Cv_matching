@@ -13,6 +13,9 @@ from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+# Download the 'punkt' resource
+nltk.download('punkt')
+
 # Charger le modèle FastText
 #CV = './cc.fr.300.bin'
 data_dir = './data/CV'
